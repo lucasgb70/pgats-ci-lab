@@ -1,0 +1,44 @@
+#CI de Nível 03 - Disparo após concluão de uma pipeline
+
+# nome do nosso 'pipeline'
+name: 'Execução por Deploy'
+
+#regras de disparo (gatilhos/triggers)
+on: 
+  workflow_run:
+    workflows: ['Execução Manual']
+    types:
+      - completed
+
+#trabalhos (jobs) do nosso pipeline = jobs
+jobs:
+  e2e-tests:
+
+    #Máquina virtual onde o job será executado
+    runs-on: ubuntu-latest
+
+    #passos do script de build
+    steps:
+    #clone do projeto
+      - uses: actions/checkout@v4
+
+      # instalação do Node
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22.x
+
+      # instalação do yarn
+      - name: Instalação do Yarn
+        run: npm install -g yarn
+
+      # instalação das dependências
+      - name: Instalação das dependências
+        run: yarn
+
+      # instalação do Playwright
+      - name: Instalação do Playwright
+        run: yarn playwright install
+
+      # execução dos testes e2e
+      - name: Execução dos testes E2E
+        run: yarn run e2e
