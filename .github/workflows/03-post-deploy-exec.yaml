@@ -1,7 +1,7 @@
 #CI de Nível 03 - Disparo após concluão de uma pipeline
 
 # nome do nosso 'pipeline'
-name: Execução por Deploy
+name: 'Execução por Deploy'
 
 #regras de disparo (gatilhos/triggers)
 on: 
@@ -46,7 +46,7 @@ jobs:
         run: yarn run e2e
 
       - uses: actions/upload-artifact@v4
-        if: {{ !cancelled() }}
+        if: ${{ !cancelled() }}
         with:
           name: relatorio
           path: ./playwright-report
