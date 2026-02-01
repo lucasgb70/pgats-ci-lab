@@ -6,19 +6,18 @@ name: 'Execução Manual'
 #regras de disparo (gatilhos/triggers)
 #gatilho de execução manual = workflow_dispatch
 
-on: 
+on:
   workflow_dispatch:
 
 #trabalhos (jobs) do nosso pipeline = jobs
 jobs:
   e2e-tests:
-
     #Máquina virtual onde o job será executado
     runs-on: ubuntu-latest
 
     #passos do script de build
     steps:
-    #clone do projeto
+      #clone do projeto
       - uses: actions/checkout@v4
 
       # instalação do Node

@@ -6,20 +6,19 @@ name: 'Execução Agendada'
 #regras de disparo (gatilhos/triggers)
 #gatilho de execução manual = workflow_dispatch
 
-on: 
+on:
   schedule:
     - cron: '0 6 * * 1' # Executa todo domingo à meia-noite
 
 #trabalhos (jobs) do nosso pipeline = jobs
 jobs:
   e2e-tests:
-
     #Máquina virtual onde o job será executado
     runs-on: ubuntu-latest
 
     #passos do script de build
     steps:
-    #clone do projeto
+      #clone do projeto
       - uses: actions/checkout@v4
 
       # instalação do Node

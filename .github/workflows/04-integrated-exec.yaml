@@ -19,7 +19,7 @@ jobs:
       - name: Checando padronização do código
         run: yarn lint
 
-  unidade: 
+  unidade:
     runs-on: ubuntu-latest
 
     steps:
@@ -59,7 +59,7 @@ jobs:
         with:
           name: relatorio
           path: ./playwright-report
-    
+
   deploy:
     runs-on: ubuntu-latest
 
